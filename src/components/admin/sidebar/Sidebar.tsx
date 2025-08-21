@@ -2,7 +2,7 @@ import { Avatar, Text } from '@mantine/core'
 import { IconCalendarCheck,  IconLayoutGrid, IconLetterHSmall, IconMoodHeart, IconStethoscope, IconVaccine } from '@tabler/icons-react'
 import { useSelector } from 'react-redux'
 
-import { NavLink } from 'react-router'
+import { NavLink } from 'react-router-dom'
 
 
 const links=[

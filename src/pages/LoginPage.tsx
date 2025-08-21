@@ -1,7 +1,7 @@
 import { Button, PasswordInput, TextInput } from '@mantine/core'
 import { useForm } from '@mantine/form'
 import { IconLetterHSmall } from '@tabler/icons-react'
-import { Link, useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router-dom';
 import { loginUser } from '../service/UserService';
 import { errorNotification, successNotification } from '../utility/NotificationUtil';
 import { useState } from 'react';
@@ -32,9 +32,10 @@ const LoginPage = () => {
     loginUser(values).then((_data)=>{
       console.log(jwtDecode(_data));
       successNotification("Logged in Successfully");
+      
       dispatch(setJwt(_data));
       dispatch(setUser(jwtDecode(_data)))
-      navigate("/dashboard");
+      
     }).catch((error)=>{
       errorNotification(error?.response?.data?.errorMessage);
     }).finally(()=>setLoading(false))

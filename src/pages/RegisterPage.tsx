@@ -4,7 +4,7 @@ import { IconLetterHSmall } from '@tabler/icons-react'
 
 import { registerUser } from '../service/UserService';
 import { errorNotification, successNotification } from '../utility/NotificationUtil';
-import { Link, useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,15}$/;
@@ -56,7 +56,7 @@ const RegisterPage = () => {
             <form onSubmit={form.onSubmit(handleSubmit)} className='flex flex-col gap-5  [&_input]:placeholder:bg-neutral-100 [&_.mantine-Input-input]:!border-white [&_.mantine-Input-input]:!border [&_input]:!pl-2 [&_svg]:text-white [&_input]:text-white focus-within:[&_.mantine-Input-input]:!border-green-100'>
                 <div className='self-center font-medium font-heading text-white text-xl'>Register</div>
                <SegmentedControl 
-               {...form.getInputProps("type")}
+               {...form.getInputProps("role")}
                 fullWidth 
                 size="md" 
                 radius="md" 
