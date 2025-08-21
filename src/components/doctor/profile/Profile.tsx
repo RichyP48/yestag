@@ -1,16 +1,15 @@
 import { Avatar, Button, Divider, Modal, NumberInput, Select, Table, TableTbody, TagsInput, TextInput } from '@mantine/core'
 import { DateInput } from '@mantine/dates';
 import { IconEdit } from '@tabler/icons-react';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { bloodGroups, doctorDepartments, doctorSpecializations } from '../../../data/DropdownData';
 import { useDisclosure } from '@mantine/hooks';
-
-const Profile = () => {
-  const user = useSelector((state:any)=> state.user);
-  const [editMode, setEdit]=useState(false)
-  const [opened, {open, close}]=useDisclosure(false);
-  const doctor: any={
+import { getDoctor } from '../../../service/DoctorProfileService';
+import { data } from 'react-router';
+import { formatDate } from '../../../utility/DateUtility';
+ 
+const doctor: any={
     name: "sarah mogou",
     email: "sarahmogou99@gmail.com",
     dob: "1965-05-15",
@@ -22,6 +21,19 @@ const Profile = () => {
     totalExp: 10,
     profilePicture: "https://randomuser.me/api/portraits/men/75.jpg"
   }
+const Profile = () => {
+  const user = useSelector((state:any)=> state.user);
+  const [editMode, setEdit]=useState(false)
+  const [opened, {open, close}]=useDisclosure(false);
+  const [profile, setProfile]=useState<any>({});
+  useEffect(()=>{
+       console.log(user)
+    getDoctor(user.profileId).then((data)=>{
+      setProfile(data);
+    }).catch((error)=>{
+      console.log(error);
+    })
+  },[])
   return (
     <div className='p-10'>
       <div className='flex justify-between items-center'>
@@ -53,7 +65,7 @@ const Profile = () => {
                     <DateInput 
                     placeholder='date of birth'/>
                     
-                  </Table.Td>:<Table.Td className='text-xl'>{doctor.dob}</Table.Td>}
+                  </Table.Td>:<Table.Td className='text-xl'>{formatDate(doctor.dob)}</Table.Td>}
                 </Table.Tr>
 
                 <Table.Tr>
@@ -65,7 +77,7 @@ const Profile = () => {
                     maxLength={10}
                     clampBehavior='strict'
                     hideControls/>
-                  </Table.Td>:<Table.Td className='text-xl'>{doctor.phone}</Table.Td>}
+                  </Table.Td>:<Table.Td className='text-xl'>{profile.phone}</Table.Td>}
                 </Table.Tr>
 
                 <Table.Tr>
@@ -76,7 +88,7 @@ const Profile = () => {
                     
                     placeholder='Address'
                     />
-                  </Table.Td>:<Table.Td className='text-xl'>{doctor.address}</Table.Td>}
+                  </Table.Td>:<Table.Td className='text-xl'>{profile.address}</Table.Td>}
                 </Table.Tr>
 
                 <Table.Tr>
@@ -87,7 +99,7 @@ const Profile = () => {
                      maxLength={10}
                     placeholder='License Number'
                     />
-                  </Table.Td>:<Table.Td className='text-xl'>{doctor.licenseNo}</Table.Td>}
+                  </Table.Td>:<Table.Td className='text-xl'>{profile.licenseNo}</Table.Td>}
                 </Table.Tr>
 
                 <Table.Tr>
@@ -96,7 +108,7 @@ const Profile = () => {
                   <Table.Td className='text-xl'>
                    <Select data={doctorSpecializations}
                    placeholder='specialization' />
-                  </Table.Td>:<Table.Td className='text-xl'>{doctor.specialization}</Table.Td>}
+                  </Table.Td>:<Table.Td className='text-xl'>{profile.specialization}</Table.Td>}
                 </Table.Tr>
 
                 <Table.Tr>
