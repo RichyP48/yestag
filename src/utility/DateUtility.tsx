@@ -14,6 +14,7 @@ const formatDate=(dateString: any)=>{
          "Novembre",
          "Decembre"
     ];
+    
     const date = new Date(dateString);
     const day= date.getDate();
     const month=months[date.getMonth()];
