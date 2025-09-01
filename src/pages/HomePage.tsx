@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router'
-import { Button } from '../components/ui/button'
+
 import { Building2, CheckCircle, ChevronRight, Clock, Filter, GraduationCap, Heart, MapPin, MessageSquare, School, Search, Star, Users, Zap } from 'lucide-react'
-import { Input } from '../components/ui/input'
+
 import { internshipOffers } from '../data/DropdownData'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
 import { Badge } from '../components/ui/badge'
+import { Button } from '../components/ui/button'
+import { Input } from '../components/ui/input'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
+import UserMenu from './UserMenu'
+
 
 const HomePage = () => {
     const [searchTerm, setSearchTerm] = useState("")
@@ -33,7 +37,7 @@ const HomePage = () => {
                 À propos
               </a>
             </nav>
-            {/* <UserMenu /> */}
+            <UserMenu /> 
           </div>
         </div>
       </header>
@@ -42,9 +46,9 @@ const HomePage = () => {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/hero-bg.jpg')" }}
+          style={{ backgroundImage: "url('/slider.jpg')" }}
         >
-          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-900/90 to-teal-600/40"></div>
         </div>
         <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
@@ -55,7 +59,7 @@ const HomePage = () => {
             <span className="text-orange-500">POSTULEZ</span>
           </h1>
           <p className="text-xl mb-8">Des centaines d'offres de stage vous attendent.</p>
-          <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-lg px-8 py-3" asChild>
+          <Button size="lg" className="bg-primary-500 hover:bg-primary-600 text-lg px-8 py-3" asChild>
             <Link to="/login">Voir les offres</Link>
           </Button>
         </div>
@@ -132,7 +136,7 @@ const HomePage = () => {
       <section id="about" className="py-16 bg-white">
         <div
           className="relative bg-cover bg-center bg-no-repeat py-20"
-          style={{ backgroundImage: "url('/images/about-bg.jpg')" }}
+          style={{ backgroundImage: "url('/slider-21.jpg')" }}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-primary-900/90 to-teal-600/90"></div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -298,10 +302,10 @@ const HomePage = () => {
             </div>
 
             <div className="relative">
-              <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl p-8 text-white transform rotate-3 shadow-2xl">
-                <Users className="w-16 h-16 mb-6" />
-                <h3 className="text-2xl font-bold mb-4">Rejoignez notre communauté</h3>
-                <p className="text-lg mb-6">Plus de 10,000 étudiants et 500 entreprises nous font confiance.</p>
+              <div className="bg-gradient-to-br from-orange-500 to-orange-800 rounded-2xl p-8 text-white transform rotate-3 shadow-2xl">
+                <Users className="w-12 h-12 mb-4" />
+                <h3 className="text-2xl font-bold mb-2">Rejoignez notre communauté</h3>
+                <p className="text-lg mb-4">Plus de 10,000 étudiants et 500 entreprises nous font confiance.</p>
                 <div className="flex items-center space-x-4">
                   <div className="flex -space-x-2">
                     <div className="w-8 h-8 bg-white rounded-full"></div>
@@ -324,7 +328,7 @@ const HomePage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-primary-900 text-white py-12">
+      <footer className="bg-gradient-to-l from-[#2dd4bf]  to-[#1f2937] text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
